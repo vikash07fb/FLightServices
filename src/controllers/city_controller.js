@@ -77,7 +77,7 @@ const update = async function(req,res){
         return res.status(200).json({
             data : response,
             success : true ,
-            message : "Successfully deleted  the city ",
+            message : "Successfully updated  the city ",
             err : {}
         });
     } catch (error) {
