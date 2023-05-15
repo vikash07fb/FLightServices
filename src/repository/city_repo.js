@@ -11,7 +11,26 @@ class CityRepository {
             throw { error };
         }
     }
+    async createMultipleCities(cities){
+        try {
+         
+            // for (let i = 0; i < cities.length; i++) {
+            //     const city = await City.create({
+            //       name: cities[i].name,
+            //     //   state: cities[i].state
+            //     });
+            //     console.log(city);
+            //   }
+           
+            // console.log(cities[0].name)
+            
+            await City.bulkInsert(cities);
 
+        } catch (error) {
+            console.log("Something went wrong in the repo layer")
+            throw { error };
+        }
+    }
     async deleteCity(cityID) {
         try {
             await City.destroy({

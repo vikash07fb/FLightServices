@@ -112,11 +112,45 @@ const update = async function(req,res){
     }
 }
 
+const createMultipleCities = async function(req,res){
+    try {
+     const cities = req.body; // Assuming the request body has a "cities" property with an array of city objects
 
+//   if (!cities || !Array.isArray(cities)) {
+//     res.status(400).json({ error: 'Invalid request body' });
+//     return;
+//   }
+
+//    console.log(cities);
+//    res.status(201).json({
+//     data : cities,
+
+//    })
+
+  const values = await cityService.createMultileCities(cities);
+//   const values = cities.map((city) => [city.name]);
+  res.status(201).json({
+    data : values,
+    success : true ,
+    message : "Successfully enterred the cities ",
+    err : {}
+  })
+
+    } catch (error) {
+        console.log(error);
+        return res.status(500).json({
+            data : {},
+            success : false,
+            message : "Not able to enter  the city ",
+            err : error
+        })
+    }
+}
 module.exports = {
     create,
     destroy,
     get,
     update,
-    getAll
+    getAll,
+    createMultipleCities
 }
