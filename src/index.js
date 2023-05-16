@@ -22,6 +22,7 @@ const setupAndStartServer= async () => {
       if(process.env.DB_SYNC){
          db.sequelize.sync({alert:true});
       }
+      
   
    });
 
